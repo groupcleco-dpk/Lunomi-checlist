@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lunomi — Checklist</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+:root{--primary:#2563EB;--accent:#F0A500;--ai:#7C6BFF;--success:#00E5A0;--danger:#FF4757;--dark:#0F172A;--surface:#1E293B;--border:#2D3F55;--text:#E2E8F0;--muted:#64748B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding:20px 16px 80px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal-bg.hidden{display:none}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px 24px;width:100%;max-width:400px}
+.modal h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:8px}
+.modal p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.modal label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;font-weight:500}
+.modal input{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;margin-bottom:13px;outline:none}
+.modal input:focus{border-color:var(--primary)}
+.modal input::placeholder{color:var(--border)}
+.btn-p{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer}
+.btn-p:disabled{opacity:.4;cursor:not-allowed}
+.modal-note{font-size:11px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
+.modal-note a{color:var(--ai);text-decoration:none}
+.err-msg{color:var(--danger);font-size:12px;margin:-8px 0 12px;display:none}
+.header{text-align:center;margin-bottom:24px}
+.logo{font-family:'Syne',sans-serif;font-size:26px;font-weight:800}
+.logo span{color:var(--accent)}
+.subtitle{color:var(--muted);font-size:12px;margin-top:3px}
+.user-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:12px;margin-top:8px;cursor:pointer}
+.udot{width:6px;height:6px;background:var(--success);border-radius:50%}
+.pw{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:24px}
+.pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pl{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
+.pp{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--success)}
+.bb{background:var(--dark);border-radius:100px;height:7px;overflow:hidden}
+.bf{height:100%;background:linear-gradient(90deg,var(--primary),var(--ai));border-radius:100px;transition:width .4s}
+.stats{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.pill{background:var(--dark);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.dot{width:5px;height:5px;border-radius:50%}
+.ss{font-size:11px;color:var(--muted);margin-top:8px;text-align:right}
+.ss.sy{color:var(--accent)}.ss.ok{color:var(--success)}
+.phase{margin-bottom:20px}
+.ph{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface);border-radius:12px;border-left:3px solid var(--primary);cursor:pointer;user-select:none;margin-bottom:8px}
+.ph.c2{border-left-color:var(--ai)}.ph.c3{border-left-color:var(--accent)}.ph.c4{border-left-color:var(--success)}.ph.c5{border-left-color:var(--danger)}
+.pi{font-size:16px}.ptt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;flex:1}
+.pb{font-size:10px;padding:2px 7px;border-radius:100px;background:var(--dark);color:var(--muted)}
+.pg{font-size:12px;color:var(--success);font-weight:600;min-width:32px;text-align:right}
+.items{display:flex;flex-direction:column;gap:5px}
+.item{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.item:active{transform:scale(.98)}.item.done{opacity:.5;border-color:transparent}.item.done .it{text-decoration:line-through}
+.cb{width:19px;height:19px;border:2px solid var(--border);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--dark);transition:all .2s}
+.item.done .cb{background:var(--success);border-color:var(--success)}
+.ck{display:none;color:var(--dark);font-size:11px;font-weight:800}.item.done .ck{display:block}
+.it{font-size:13px;line-height:1.5;color:var(--text)}
+.tags{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap}
+.tag{font-size:10px;padding:2px 6px;border-radius:100px;font-weight:600}
+.tc{background:rgba(124,107,255,.15);color:var(--ai)}.tco{background:rgba(37,99,235,.15);color:#60A5FA}
+.tm{background:rgba(240,165,0,.15);color:var(--accent)}.td{background:rgba(0,229,160,.15);color:var(--success)}
+.tt{background:rgba(255,71,87,.15);color:var(--danger)}
+.ptip{background:rgba(124,107,255,.08);border:1px solid rgba(124,107,255,.2);border-radius:7px;padding:8px 10px;margin-top:5px;font-size:11px;color:#A78BFA;line-height:1.5}
+.footer{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+.btn-g{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;padding:8px 18px;border-radius:100px;cursor:pointer}
+.party{display:none;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(124,107,255,.1));border:1px solid var(--ai);border-radius:16px;margin-bottom:20px}
+.party.show{display:block}.party h2{font-family:'Syne',sans-serif;font-size:18px;color:var(--success);margin-bottom:6px}.party p{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2>⚡ Setup Checklist</h2>
+    <p>Hubungkan ke Supabase agar progress tersinkron antara HP dan laptop.</p>
+    <label>Supabase URL</label>
+    <input type="text" id="sbUrl" placeholder="https://xxxx.supabase.co">
+    <label>Supabase Anon Key</label>
+    <input type="password" id="sbKey" placeholder="eyJhbGciOi...">
+    <label>Nama device kamu</label>
+    <input type="text" id="sbUser" placeholder="Andi — iPhone  /  Andi — Laptop">
+    <div class="err-msg" id="errMsg">Gagal konek. Cek URL dan Key.</div>
+    <button class="btn-p" id="setupBtn" onclick="doSetup()">Hubungkan & Mulai</button>
+    <p class="modal-note">
+      URL & Key: <a href="https://supabase.com/dashboard" target="_blank">Supabase Dashboard</a> → Project → Settings → API<br>
+      Tabel <strong>lunomi_checklist</strong> dibuat otomatis di Supabase kamu.
+    </p>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+  <div class="header">
+    <div class="logo">L<span>U</span>NOMI</div>
+    <div class="subtitle">Checklist Siap Jual — Solo Developer</div>
+    <div class="user-badge" onclick="doLogout()">
+      <span class="udot"></span>
+      <span id="uLabel">...</span>
+      <span style="color:var(--muted)">· keluar</span>
+    </div>
+  </div>
+  <div class="pw">
+    <div class="pt"><div class="pl">Progress Keseluruhan</div><div class="pp" id="pct">0%</div></div>
+    <div class="bb"><div class="bf" id="bar" style="width:0%"></div></div>
+    <div class="stats">
+      <div class="pill"><span class="dot" style="background:var(--success)"></span><span id="dc">0</span> selesai</div>
+      <div class="pill"><span class="dot" style="background:var(--muted)"></span><span id="lc">0</span> tersisa</div>
+    </div>
+    <div class="ss" id="ss">● Tersinkron</div>
+  </div>
+  <div class="party" id="party">
+    <h2>🎉 Lunomi Siap Dijual!</h2>
+    <p>Semua checklist selesai. Waktunya closing klien pertama!</p>
+  </div>
+  <div id="phases"></div>
+  <div class="footer">
+    <button class="btn-g" onclick="doReset()">↺ Reset Semua</button>
+    <button class="btn-g" onclick="doLogout()">⚙ Ganti Akun</button>
+  </div>
+</div>
+
+<script>
+const PHASES=[
+  {id:'p1',icon:'🗄️',title:'FASE 1 — Database & Fondasi',cls:'',badge:'Hari 1 pagi',items:[
+    {id:'p1-1',text:'Buat tabel Supabase: outlets, users, roles',tags:['td','tm'],tip:'Buka Supabase Dashboard → SQL Editor → jalankan script schema dari CLAUDE.md.'},
+    {id:'p1-2',text:'Buat tabel: transactions, transaction_items, products, inventory',tags:['td','tm'],tip:'Lanjut SQL Editor. Tambahkan foreign key & index pada created_at.'},
+    {id:'p1-3',text:'Buat tabel: employees, attendance, agent_logs',tags:['td','tm'],tip:'Selesaikan semua tabel sebelum mulai coding.'},
+    {id:'p1-4',text:'Buat src/lib/supabase/client.js dengan koneksi nyata',tags:['tc','tco'],tip:'💬 Claude: "Buat src/lib/supabase/client.js Next.js 16, @supabase/supabase-js v2.104. Gunakan NEXT_PUBLIC_SUPABASE_URL & NEXT_PUBLIC_SUPABASE_ANON_KEY."'},
+    {id:'p1-5',text:'Seed 1 outlet + 3 user (owner, manager, kasir)',tags:['td','tm'],tip:'Insert manual via Supabase Table Editor.'},
+    {id:'p1-6',text:'Test koneksi: fetch outlets muncul di UI',tags:['tt','tco'],tip:'💬 Claude: "Buat app/test/page.js yang fetch tabel outlets dari Supabase dan tampilkan. Hapus setelah berhasil."'},
+  ]},
+  {id:'p2',icon:'🔐',title:'FASE 2 — Auth & Route Guard',cls:'c2',badge:'Hari 1 siang',items:[
+    {id:'p2-1',text:'Aktifkan Supabase Auth (Email provider)',tags:['tm'],tip:'Supabase Dashboard → Authentication → Providers → enable Email.'},
+    {id:'p2-2',text:'Buat src/store/auth-store.js (Zustand v5)',tags:['tc','tco'],tip:'💬 Claude: "Buat auth-store.js Zustand v5. State: user, role, outlet_id, isLoading. Actions: signIn, signOut, getSession via Supabase Auth."'},
+    {id:'p2-3',text:'Update login page → konek Supabase Auth nyata',tags:['tc','tco'],tip:'💬 Claude: "Update app/(auth)/login/page.js. Ganti dummy dengan signInWithPassword. Redirect: /dashboard (owner/manager) atau /kasir (kasir)."'},
+    {id:'p2-4',text:'Buat middleware.js route guard per role',tags:['tc','tco'],tip:'💬 Claude: "Buat src/middleware.js Next.js 16. Protect /dashboard (owner & manager), /kasir (kasir & manager). Redirect ke /login jika tidak ada session."'},
+    {id:'p2-5',text:'Test login 3 akun — redirect harus benar',tags:['tt'],tip:'Test manual: owner→/dashboard, manager→/dashboard, kasir→/kasir.'},
+  ]},
+  {id:'p3',icon:'🛒',title:'FASE 3 — POS Kasir (Core Feature)',cls:'c3',badge:'Hari 2',items:[
+    {id:'p3-1',text:'Buat /kasir: grid produk + keranjang (2 kolom)',tags:['tc','tco'],tip:'💬 Claude: "Buat app/kasir/page.js. Kiri: grid produk dari Supabase filter outlet_id. Kanan: keranjang. Dark #0F172A, primary #2563EB. Mobile-first 375px."'},
+    {id:'p3-2',text:'Buat transaction-store.js (Zustand): keranjang + total',tags:['tc','tco'],tip:'💬 Claude: "Buat src/store/transaction-store.js Zustand v5. Actions: addItem, removeItem, updateQty, clearCart, getTotal. Format IDR Intl.NumberFormat id-ID."'},
+    {id:'p3-3',text:'Modal pembayaran: Tunai, QRIS, E-Wallet',tags:['tc','tco'],tip:'💬 Claude: "Tambah modal pembayaran di kasir. Tunai: input + kembalian. QRIS: QR placeholder. E-Wallet: Gopay/OVO/Dana."'},
+    {id:'p3-4',text:'Simpan transaksi ke Supabase (transactions + items)',tags:['tc','tco'],tip:'💬 Claude: "Buat src/lib/supabase/transactions.js. Insert transactions & transaction_items batch. Status=paid."'},
+    {id:'p3-5',text:'Kurangi stok inventory otomatis setelah transaksi',tags:['tc','tco'],tip:'💬 Claude: "Setelah transaksi, update inventory kurangi stock. Jika stock < 5, insert agent_logs (agent_type=OPS, action=low_stock_alert)."'},
+    {id:'p3-6',text:'Komponen struk sederhana setelah transaksi',tags:['tc','tco'],tip:'💬 Claude: "Buat src/components/pos/Receipt.jsx. Tampilkan: outlet, tanggal WIB, items, total, payment method. Tombol Cetak & Transaksi Baru."'},
+    {id:'p3-7',text:'Test end-to-end: transaksi → cek Supabase tersimpan ✓',tags:['tt'],tip:'Beli 3 produk, bayar, cek tabel transactions & inventory di Supabase.'},
+  ]},
+  {id:'p4',icon:'📊',title:'FASE 4 — Dashboard Owner (Data Real)',cls:'c4',badge:'Hari 3',items:[
+    {id:'p4-1',text:'Ganti semua angka dummy dashboard → data Supabase',tags:['tc','tco'],tip:'💬 Claude: "Update dashboard/page.js. Revenue=SUM transactions today. Outlet=COUNT outlets. Karyawan=COUNT employees. Gunakan formatRupiah()."'},
+    {id:'p4-2',text:'Widget Top 5 Outlet by revenue hari ini',tags:['tc','tco'],tip:'💬 Claude: "Buat OutletPerformance component. Fetch top 5 outlet by revenue. Perubahan vs kemarin. Hijau=#00E5A0 naik, merah=#FF4757 turun."'},
+    {id:'p4-3',text:'Realtime alert dari agent_logs (stok, transaksi)',tags:['tc','tco'],tip:'💬 Claude: "Subscribe ke tabel agent_logs via supabase.channel(). Setiap INSERT baru tampilkan toast notification di pojok kanan atas."'},
+    {id:'p4-4',text:'Status 6 AI Agent dari agent_logs (bukan cosmetic)',tags:['tc','tco'],tip:'💬 Claude: "Agent status ACTIVE jika ada agent_logs dengan agent_type tersebut dalam 1 jam terakhir. Tampilkan action terakhir."'},
+  ]},
+  {id:'p5',icon:'🚀',title:'FASE 5 — Polish & Siap Demo',cls:'c5',badge:'Hari 4-5',items:[
+    {id:'p5-1',text:'Seed data realistis: 3 outlet, 10 produk, 20 transaksi',tags:['tm','td'],tip:'Insert data yang terlihat nyata untuk demo ke klien. Gunakan nama produk F&B Indonesia.'},
+    {id:'p5-2',text:'Test mobile 375px — semua halaman usable',tags:['tt'],tip:'Chrome DevTools → device toolbar → iPhone SE. Pastikan tombol POS bisa disentuh jari.'},
+    {id:'p5-3',text:'Fix semua error di browser console',tags:['tc','tco'],tip:'💬 Claude: "Ada error di Lunomi: [paste error]. Tolong fix."'},
+    {id:'p5-4',text:'Set env variables di Vercel (Supabase + Gemini)',tags:['tm'],tip:'Vercel → Settings → Environment Variables. Tambahkan NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, GEMINI_API_KEY.'},
+    {id:'p5-5',text:'Deploy & test production di lunomi.vercel.app',tags:['tm'],tip:'Push ke GitHub → Vercel auto-deploy. Test semua flow di production URL.'},
+    {id:'p5-6',text:'Buat akun demo: demo@lunomi.id / Demo1234',tags:['tm','td'],tip:'Supabase Auth → Users → Invite. Role: owner. Untuk demo ke calon klien.'},
+    {id:'p5-7',text:'✅ Final: login → kasir transaksi → dashboard mulus',tags:['tt'],tip:'Flow lengkap tanpa error = Lunomi siap dijual! 🎉'},
+  ]}
+];
+
+let sb=null, state={};
+const TBL='lunomi_checklist';
+
+function loadSupa(){
+  return new Promise((res,rej)=>{
+    if(window.supabase){res();return;}
+    const s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js';
+    s.onload=res;s.onerror=rej;
+    document.head.appendChild(s);
+  });
+}
+
+async function doSetup(){
+  const url=document.getElementById('sbUrl').value.trim();
+  const key=document.getElementById('sbKey').value.trim();
+  const user=document.getElementById('sbUser').value.trim()||'User';
+  const btn=document.getElementById('setupBtn');
+  const err=document.getElementById('errMsg');
+  if(!url||!key){err.textContent='Isi URL dan Key dulu.';err.style.display='block';return;}
+  btn.disabled=true;btn.textContent='Menghubungkan...';err.style.display='none';
+  try{
+    await loadSupa();
+    sb=window.supabase.createClient(url,key);
+    const {error}=await sb.from(TBL).select('id').limit(1);
+    if(error&&error.code!=='PGRST116'&&error.code!=='42P01')throw new Error(error.message);
+    localStorage.setItem('lu',JSON.stringify({url,key,user}));
+    startApp(user);
+  }catch(e){
+    err.textContent='Gagal: '+e.message+'. Pastikan tabel lunomi_checklist sudah dibuat.';
+    err.style.display='block';
+    btn.disabled=false;btn.textContent='Hubungkan & Mulai';
+  }
+}
+
+async function startApp(user){
+  document.getElementById('modalBg').classList.add('hidden');
+  document.getElementById('app').style.display='block';
+  document.getElementById('uLabel').textContent=user;
+  await loadData();
+  listenRealtime();
+}
+
+async function loadData(){
+  setSS('sy','↻ Memuat...');
+  try{
+    const {data,error}=await sb.from(TBL).select('id,done');
+    if(!error&&data){state={};data.forEach(r=>{if(r.done)state[r.id]=true;});}
+  }catch(e){}
+  setSS('ok','● Tersinkron');
+  render();
+}
+
+async function toggle(id){
+  state[id]=!state[id];
+  if(!state[id])delete state[id];
+  render();
+  setSS('sy','↻ Menyinkron...');
+  try{
+    await sb.from(TBL).upsert({id,done:!!state[id],updated_at:new Date().toISOString()},{onConflict:'id'});
+    setSS('ok','● Tersinkron');
+  }catch(e){setSS('','⚠ Gagal sync');}
+}
+
+function listenRealtime(){
+  try{
+    sb.channel('cl').on('postgres_changes',{event:'*',schema:'public',table:TBL},p=>{
+      const r=p.new;if(!r)return;
+      if(r.done)state[r.id]=true;else delete state[r.id];
+      render();setSS('ok','● Tersinkron');
+    }).subscribe();
+  }catch(e){}
+}
+
+function setSS(cls,txt){
+  const el=document.getElementById('ss');
+  el.className='ss'+(cls?' '+cls:'');el.textContent=txt;
+}
+
+function render(){
+  const c=document.getElementById('phases');c.innerHTML='';
+  PHASES.forEach(ph=>{
+    const done=ph.items.filter(i=>state[i.id]).length;
+    const el=document.createElement('div');el.className='phase';
+    el.innerHTML=`
+      <div class="ph ${ph.cls}" onclick="togglePh('${ph.id}')">
+        <span class="pi">${ph.icon}</span>
+        <span class="ptt">${ph.title}</span>
+        <span class="pb">${ph.badge}</span>
+        <span class="pg">${done}/${ph.items.length}</span>
+      </div>
+      <div class="items" id="i-${ph.id}">
+        ${ph.items.map(item=>`
+          <div class="item${state[item.id]?' done':''}" onclick="toggle('${item.id}')">
+            <div class="cb"><span class="ck">✓</span></div>
+            <div style="flex:1">
+              <div class="it">${item.text}</div>
+              <div class="tags">${item.tags.map(t=>`<span class="tag ${t}">${
+                t==='tc'?'🤖 Claude':t==='tco'?'💻 Code':t==='tm'?'✋ Manual':t==='td'?'🗄️ DB':'🧪 Test'
+              }</span>`).join('')}</div>
+              ${item.tip?`<div class="ptip">${item.tip}</div>`:''}
+            </div>
+          </div>`).join('')}
+      </div>`;
+    c.appendChild(el);
+  });
+  updProg();
+}
+
+function togglePh(id){
+  const el=document.getElementById('i-'+id);
+  el.style.display=el.style.display==='none'?'flex':'none';
+}
+
+function updProg(){
+  const total=PHASES.reduce((a,p)=>a+p.items.length,0);
+  const done=Object.values(state).filter(Boolean).length;
+  const pct=Math.round(done/total*100);
+  document.getElementById('pct').textContent=pct+'%';
+  document.getElementById('bar').style.width=pct+'%';
+  document.getElementById('dc').textContent=done;
+  document.getElementById('lc').textContent=total-done;
+  document.getElementById('party').classList.toggle('show',pct===100);
+}
+
+async function doReset(){
+  if(!confirm('Reset semua progress di semua device?'))return;
+  state={};render();
+  try{await sb.from(TBL).delete().neq('id','__x__');setSS('ok','● Tersinkron');}catch(e){}
+}
+
+function doLogout(){
+  localStorage.removeItem('lu');location.reload();
+}
+
+// AUTO LOGIN
+(async()=>{
+  const saved=localStorage.getItem('lu');
+  if(saved){
+    try{
+      const {url,key,user}=JSON.parse(saved);
+      document.getElementById('sbUrl').value=url;
+      document.getElementById('sbKey').value=key;
+      document.getElementById('sbUser').value=user;
+      await loadSupa();
+      sb=window.supabase.createClient(url,key);
+      startApp(user);
+    }catch(e){document.getElementById('modalBg').classList.remove('hidden');}
+  }
+})();
+</script>
+
+<!-- INSTRUKSI SETUP TABEL -->
+<script>
+// PENTING: Buat tabel ini dulu di Supabase SQL Editor:
+/*
+CREATE TABLE IF NOT EXISTS lunomi_checklist (
+  id TEXT PRIMARY KEY,
+  done BOOLEAN DEFAULT FALSE,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+ALTER TABLE lunomi_checklist ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "public_access" ON lunomi_checklist FOR ALL USING (true) WITH CHECK (true);
+*/
+</script>
+</body>
+</html>
