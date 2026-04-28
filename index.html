@@ -9,93 +9,153 @@
 :root{--primary:#2563EB;--accent:#F0A500;--ai:#7C6BFF;--success:#00E5A0;--danger:#FF4757;--dark:#0F172A;--surface:#1E293B;--border:#2D3F55;--text:#E2E8F0;--muted:#64748B}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding:20px 16px 80px}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
 .modal-bg.hidden{display:none}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px 24px;width:100%;max-width:400px}
-.modal h2{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;margin-bottom:8px}
-.modal p{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.6}
-.modal label{font-size:12px;color:var(--muted);display:block;margin-bottom:5px;font-weight:500}
-.modal input{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;margin-bottom:13px;outline:none}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px 22px;width:100%;max-width:400px}
+.modal h2{font-family:'Syne',sans-serif;font-size:19px;font-weight:800;margin-bottom:6px}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:20px;line-height:1.6}
+.modal label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.modal input{width:100%;background:var(--dark);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-family:'Inter',sans-serif;font-size:13px;margin-bottom:12px;outline:none}
 .modal input:focus{border-color:var(--primary)}
-.modal input::placeholder{color:var(--border)}
-.btn-p{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer}
+.modal input::placeholder{color:#334155}
+.err-msg{color:var(--danger);font-size:12px;margin:-6px 0 10px;display:none;line-height:1.5}
+.btn-p{width:100%;background:var(--primary);color:#fff;border:none;border-radius:10px;padding:13px;font-family:'Syne',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:opacity .2s}
 .btn-p:disabled{opacity:.4;cursor:not-allowed}
-.modal-note{font-size:11px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.6}
-.modal-note a{color:var(--ai);text-decoration:none}
-.err-msg{color:var(--danger);font-size:12px;margin:-8px 0 12px;display:none}
-.header{text-align:center;margin-bottom:24px}
+.modal-help{font-size:11px;color:var(--muted);margin-top:14px;line-height:1.7;padding:12px;background:var(--dark);border-radius:10px}
+.modal-help strong{color:var(--text)}
+.modal-help a{color:var(--ai);text-decoration:none}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:22px}
 .logo{font-family:'Syne',sans-serif;font-size:26px;font-weight:800}
 .logo span{color:var(--accent)}
 .subtitle{color:var(--muted);font-size:12px;margin-top:3px}
-.user-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:12px;margin-top:8px;cursor:pointer}
-.udot{width:6px;height:6px;background:var(--success);border-radius:50%}
-.pw{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:24px}
+.user-badge{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:11px;margin-top:8px;cursor:pointer}
+.udot{width:6px;height:6px;background:var(--success);border-radius:50%;flex-shrink:0}
+
+/* PROGRESS */
+.pw{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:22px}
 .pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .pl{font-family:'Syne',sans-serif;font-size:13px;font-weight:700}
 .pp{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--success)}
 .bb{background:var(--dark);border-radius:100px;height:7px;overflow:hidden}
 .bf{height:100%;background:linear-gradient(90deg,var(--primary),var(--ai));border-radius:100px;transition:width .4s}
-.stats{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.stats{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
 .pill{background:var(--dark);border-radius:100px;padding:3px 10px;font-size:11px;color:var(--muted);display:flex;align-items:center;gap:5px}
 .dot{width:5px;height:5px;border-radius:50%}
 .ss{font-size:11px;color:var(--muted);margin-top:8px;text-align:right}
 .ss.sy{color:var(--accent)}.ss.ok{color:var(--success)}
-.phase{margin-bottom:20px}
+
+/* PHASE */
+.phase{margin-bottom:18px}
 .ph{display:flex;align-items:center;gap:10px;padding:11px 14px;background:var(--surface);border-radius:12px;border-left:3px solid var(--primary);cursor:pointer;user-select:none;margin-bottom:8px}
 .ph.c2{border-left-color:var(--ai)}.ph.c3{border-left-color:var(--accent)}.ph.c4{border-left-color:var(--success)}.ph.c5{border-left-color:var(--danger)}
 .pi{font-size:16px}.ptt{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;flex:1}
-.pb{font-size:10px;padding:2px 7px;border-radius:100px;background:var(--dark);color:var(--muted)}
+.pb{font-size:10px;padding:2px 7px;border-radius:100px;background:var(--dark);color:var(--muted);white-space:nowrap}
 .pg{font-size:12px;color:var(--success);font-weight:600;min-width:32px;text-align:right}
-.items{display:flex;flex-direction:column;gap:5px}
-.item{display:flex;align-items:flex-start;gap:10px;padding:11px 13px;background:var(--surface);border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
-.item:active{transform:scale(.98)}.item.done{opacity:.5;border-color:transparent}.item.done .it{text-decoration:line-through}
-.cb{width:19px;height:19px;border:2px solid var(--border);border-radius:5px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--dark);transition:all .2s}
+.items{display:flex;flex-direction:column;gap:6px}
+
+/* ITEM */
+.item{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
+.item.done{opacity:.5;border-color:transparent}
+.item.active{border-color:var(--primary)}
+.item-top{display:flex;align-items:flex-start;gap:10px;padding:12px 13px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.item-top:active{opacity:.8}
+.cb{width:20px;height:20px;border:2px solid var(--border);border-radius:6px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;background:var(--dark);transition:all .2s}
 .item.done .cb{background:var(--success);border-color:var(--success)}
 .ck{display:none;color:var(--dark);font-size:11px;font-weight:800}.item.done .ck{display:block}
-.it{font-size:13px;line-height:1.5;color:var(--text)}
-.tags{display:flex;gap:5px;margin-top:3px;flex-wrap:wrap}
+.item-right{flex:1;min-width:0}
+.it{font-size:13px;line-height:1.5;color:var(--text);font-weight:500}
+.item.done .it{text-decoration:line-through}
+.tags{display:flex;gap:5px;margin-top:4px;flex-wrap:wrap}
 .tag{font-size:10px;padding:2px 6px;border-radius:100px;font-weight:600}
-.tc{background:rgba(124,107,255,.15);color:var(--ai)}.tco{background:rgba(37,99,235,.15);color:#60A5FA}
-.tm{background:rgba(240,165,0,.15);color:var(--accent)}.td{background:rgba(0,229,160,.15);color:var(--success)}
+.tc{background:rgba(124,107,255,.15);color:var(--ai)}
+.tco{background:rgba(37,99,235,.15);color:#60A5FA}
+.tm{background:rgba(240,165,0,.15);color:var(--accent)}
+.td{background:rgba(0,229,160,.15);color:var(--success)}
 .tt{background:rgba(255,71,87,.15);color:var(--danger)}
-.ptip{background:rgba(124,107,255,.08);border:1px solid rgba(124,107,255,.2);border-radius:7px;padding:8px 10px;margin-top:5px;font-size:11px;color:#A78BFA;line-height:1.5}
-.footer{display:flex;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+.expand-icon{font-size:11px;color:var(--muted);margin-left:4px;transition:transform .2s;flex-shrink:0;margin-top:2px}
+.item.active .expand-icon{transform:rotate(180deg)}
+
+/* GUIDE PANEL */
+.guide{display:none;border-top:1px solid var(--border);padding:16px 14px;background:rgba(0,0,0,.2)}
+.item.active .guide{display:block}
+.guide-step{margin-bottom:14px}
+.guide-step:last-child{margin-bottom:0}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--primary);color:#fff;border-radius:50%;font-size:11px;font-weight:700;flex-shrink:0;margin-right:8px}
+.step-title{font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;margin-bottom:6px}
+.step-body{font-size:12px;color:#94A3B8;line-height:1.7;padding-left:30px}
+.step-body strong{color:var(--text)}
+.code-block{background:var(--dark);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-family:monospace;font-size:11px;color:#7DD3FC;margin:8px 0;overflow-x:auto;white-space:pre;line-height:1.6}
+.warn-box{background:rgba(240,165,0,.08);border:1px solid rgba(240,165,0,.2);border-radius:8px;padding:8px 10px;margin:8px 0;font-size:11px;color:#FCD34D;line-height:1.6}
+.warn-box::before{content:'⚠️ ';font-size:12px}
+.tip-box{background:rgba(124,107,255,.08);border:1px solid rgba(124,107,255,.2);border-radius:8px;padding:8px 10px;margin:8px 0;font-size:11px;color:#A78BFA;line-height:1.6}
+.tip-box::before{content:'💡 '}
+.success-box{background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.2);border-radius:8px;padding:8px 10px;margin:8px 0;font-size:11px;color:#6EE7B7;line-height:1.6}
+.success-box::before{content:'✅ '}
+.done-btn{display:block;width:100%;margin-top:14px;background:var(--success);color:var(--dark);border:none;border-radius:10px;padding:11px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;cursor:pointer;text-align:center}
+.item.done .done-btn{background:var(--surface);color:var(--muted);border:1px solid var(--border)}
+
+/* FOOTER */
+.footer{display:flex;justify-content:center;gap:10px;margin-top:24px;flex-wrap:wrap}
 .btn-g{background:var(--surface);border:1px solid var(--border);color:var(--muted);font-family:'Inter',sans-serif;font-size:12px;padding:8px 18px;border-radius:100px;cursor:pointer}
 .party{display:none;text-align:center;padding:20px;background:linear-gradient(135deg,rgba(37,99,235,.1),rgba(124,107,255,.1));border:1px solid var(--ai);border-radius:16px;margin-bottom:20px}
-.party.show{display:block}.party h2{font-family:'Syne',sans-serif;font-size:18px;color:var(--success);margin-bottom:6px}.party p{font-size:12px;color:var(--muted)}
+.party.show{display:block}
+.party h2{font-family:'Syne',sans-serif;font-size:18px;color:var(--success);margin-bottom:6px}
+.party p{font-size:12px;color:var(--muted)}
 </style>
 </head>
 <body>
 
+<!-- SETUP MODAL -->
 <div class="modal-bg" id="modalBg">
   <div class="modal">
-    <h2>⚡ Setup Checklist</h2>
-    <p>Hubungkan ke Supabase agar progress tersinkron antara HP dan laptop.</p>
+    <h2>⚡ Setup Lunomi Checklist</h2>
+    <p class="modal-sub">Hubungkan ke Supabase agar progress tersinkron antara HP dan laptop secara otomatis.</p>
     <label>Supabase URL</label>
-    <input type="text" id="sbUrl" placeholder="https://xxxx.supabase.co">
+    <input type="text" id="sbUrl" placeholder="https://xxxxxxxxxxxx.supabase.co">
     <label>Supabase Anon Key</label>
-    <input type="password" id="sbKey" placeholder="eyJhbGciOi...">
-    <label>Nama device kamu</label>
-    <input type="text" id="sbUser" placeholder="Andi — iPhone  /  Andi — Laptop">
-    <div class="err-msg" id="errMsg">Gagal konek. Cek URL dan Key.</div>
-    <button class="btn-p" id="setupBtn" onclick="doSetup()">Hubungkan & Mulai</button>
-    <p class="modal-note">
-      URL & Key: <a href="https://supabase.com/dashboard" target="_blank">Supabase Dashboard</a> → Project → Settings → API<br>
-      Tabel <strong>lunomi_checklist</strong> dibuat otomatis di Supabase kamu.
-    </p>
+    <input type="password" id="sbKey" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6...">
+    <label>Nama Device Kamu</label>
+    <input type="text" id="sbUser" placeholder="Andi — iPhone  atau  Andi — Laptop">
+    <div class="err-msg" id="errMsg"></div>
+    <button class="btn-p" id="setupBtn" onclick="doSetup()">Hubungkan & Mulai →</button>
+    <div class="modal-help">
+      <strong>Cara dapat URL & Key:</strong><br>
+      1. Buka <a href="https://supabase.com/dashboard" target="_blank">supabase.com/dashboard</a><br>
+      2. Klik project Lunomi kamu<br>
+      3. Klik <strong>Settings</strong> (ikon gear) → <strong>API</strong><br>
+      4. Copy <strong>Project URL</strong> dan <strong>anon public</strong> key<br><br>
+      <strong>Sebelum connect</strong>, buat tabel dulu di SQL Editor:<br>
+      <a href="#" onclick="showSQL()">Lihat SQL yang perlu dijalankan →</a>
+    </div>
+    <div id="sqlBox" style="display:none;margin-top:10px">
+      <div class="code-block">CREATE TABLE IF NOT EXISTS lunomi_checklist (
+  id TEXT PRIMARY KEY,
+  done BOOLEAN DEFAULT FALSE,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+ALTER TABLE lunomi_checklist ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "open" ON lunomi_checklist
+  FOR ALL USING (true) WITH CHECK (true);</div>
+    </div>
   </div>
 </div>
 
+<!-- APP -->
 <div id="app" style="display:none">
   <div class="header">
     <div class="logo">L<span>U</span>NOMI</div>
-    <div class="subtitle">Checklist Siap Jual — Solo Developer</div>
+    <div class="subtitle">Checklist Siap Jual — Panduan Lengkap</div>
     <div class="user-badge" onclick="doLogout()">
       <span class="udot"></span>
       <span id="uLabel">...</span>
       <span style="color:var(--muted)">· keluar</span>
     </div>
   </div>
+
   <div class="pw">
     <div class="pt"><div class="pl">Progress Keseluruhan</div><div class="pp" id="pct">0%</div></div>
     <div class="bb"><div class="bf" id="bar" style="width:0%"></div></div>
@@ -105,11 +165,14 @@ body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;min
     </div>
     <div class="ss" id="ss">● Tersinkron</div>
   </div>
+
   <div class="party" id="party">
     <h2>🎉 Lunomi Siap Dijual!</h2>
     <p>Semua checklist selesai. Waktunya closing klien pertama!</p>
   </div>
+
   <div id="phases"></div>
+
   <div class="footer">
     <button class="btn-g" onclick="doReset()">↺ Reset Semua</button>
     <button class="btn-g" onclick="doLogout()">⚙ Ganti Akun</button>
@@ -117,50 +180,1092 @@ body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;min
 </div>
 
 <script>
-const PHASES=[
-  {id:'p1',icon:'🗄️',title:'FASE 1 — Database & Fondasi',cls:'',badge:'Hari 1 pagi',items:[
-    {id:'p1-1',text:'Buat tabel Supabase: outlets, users, roles',tags:['td','tm'],tip:'Buka Supabase Dashboard → SQL Editor → jalankan script schema dari CLAUDE.md.'},
-    {id:'p1-2',text:'Buat tabel: transactions, transaction_items, products, inventory',tags:['td','tm'],tip:'Lanjut SQL Editor. Tambahkan foreign key & index pada created_at.'},
-    {id:'p1-3',text:'Buat tabel: employees, attendance, agent_logs',tags:['td','tm'],tip:'Selesaikan semua tabel sebelum mulai coding.'},
-    {id:'p1-4',text:'Buat src/lib/supabase/client.js dengan koneksi nyata',tags:['tc','tco'],tip:'💬 Claude: "Buat src/lib/supabase/client.js Next.js 16, @supabase/supabase-js v2.104. Gunakan NEXT_PUBLIC_SUPABASE_URL & NEXT_PUBLIC_SUPABASE_ANON_KEY."'},
-    {id:'p1-5',text:'Seed 1 outlet + 3 user (owner, manager, kasir)',tags:['td','tm'],tip:'Insert manual via Supabase Table Editor.'},
-    {id:'p1-6',text:'Test koneksi: fetch outlets muncul di UI',tags:['tt','tco'],tip:'💬 Claude: "Buat app/test/page.js yang fetch tabel outlets dari Supabase dan tampilkan. Hapus setelah berhasil."'},
-  ]},
-  {id:'p2',icon:'🔐',title:'FASE 2 — Auth & Route Guard',cls:'c2',badge:'Hari 1 siang',items:[
-    {id:'p2-1',text:'Aktifkan Supabase Auth (Email provider)',tags:['tm'],tip:'Supabase Dashboard → Authentication → Providers → enable Email.'},
-    {id:'p2-2',text:'Buat src/store/auth-store.js (Zustand v5)',tags:['tc','tco'],tip:'💬 Claude: "Buat auth-store.js Zustand v5. State: user, role, outlet_id, isLoading. Actions: signIn, signOut, getSession via Supabase Auth."'},
-    {id:'p2-3',text:'Update login page → konek Supabase Auth nyata',tags:['tc','tco'],tip:'💬 Claude: "Update app/(auth)/login/page.js. Ganti dummy dengan signInWithPassword. Redirect: /dashboard (owner/manager) atau /kasir (kasir)."'},
-    {id:'p2-4',text:'Buat middleware.js route guard per role',tags:['tc','tco'],tip:'💬 Claude: "Buat src/middleware.js Next.js 16. Protect /dashboard (owner & manager), /kasir (kasir & manager). Redirect ke /login jika tidak ada session."'},
-    {id:'p2-5',text:'Test login 3 akun — redirect harus benar',tags:['tt'],tip:'Test manual: owner→/dashboard, manager→/dashboard, kasir→/kasir.'},
-  ]},
-  {id:'p3',icon:'🛒',title:'FASE 3 — POS Kasir (Core Feature)',cls:'c3',badge:'Hari 2',items:[
-    {id:'p3-1',text:'Buat /kasir: grid produk + keranjang (2 kolom)',tags:['tc','tco'],tip:'💬 Claude: "Buat app/kasir/page.js. Kiri: grid produk dari Supabase filter outlet_id. Kanan: keranjang. Dark #0F172A, primary #2563EB. Mobile-first 375px."'},
-    {id:'p3-2',text:'Buat transaction-store.js (Zustand): keranjang + total',tags:['tc','tco'],tip:'💬 Claude: "Buat src/store/transaction-store.js Zustand v5. Actions: addItem, removeItem, updateQty, clearCart, getTotal. Format IDR Intl.NumberFormat id-ID."'},
-    {id:'p3-3',text:'Modal pembayaran: Tunai, QRIS, E-Wallet',tags:['tc','tco'],tip:'💬 Claude: "Tambah modal pembayaran di kasir. Tunai: input + kembalian. QRIS: QR placeholder. E-Wallet: Gopay/OVO/Dana."'},
-    {id:'p3-4',text:'Simpan transaksi ke Supabase (transactions + items)',tags:['tc','tco'],tip:'💬 Claude: "Buat src/lib/supabase/transactions.js. Insert transactions & transaction_items batch. Status=paid."'},
-    {id:'p3-5',text:'Kurangi stok inventory otomatis setelah transaksi',tags:['tc','tco'],tip:'💬 Claude: "Setelah transaksi, update inventory kurangi stock. Jika stock < 5, insert agent_logs (agent_type=OPS, action=low_stock_alert)."'},
-    {id:'p3-6',text:'Komponen struk sederhana setelah transaksi',tags:['tc','tco'],tip:'💬 Claude: "Buat src/components/pos/Receipt.jsx. Tampilkan: outlet, tanggal WIB, items, total, payment method. Tombol Cetak & Transaksi Baru."'},
-    {id:'p3-7',text:'Test end-to-end: transaksi → cek Supabase tersimpan ✓',tags:['tt'],tip:'Beli 3 produk, bayar, cek tabel transactions & inventory di Supabase.'},
-  ]},
-  {id:'p4',icon:'📊',title:'FASE 4 — Dashboard Owner (Data Real)',cls:'c4',badge:'Hari 3',items:[
-    {id:'p4-1',text:'Ganti semua angka dummy dashboard → data Supabase',tags:['tc','tco'],tip:'💬 Claude: "Update dashboard/page.js. Revenue=SUM transactions today. Outlet=COUNT outlets. Karyawan=COUNT employees. Gunakan formatRupiah()."'},
-    {id:'p4-2',text:'Widget Top 5 Outlet by revenue hari ini',tags:['tc','tco'],tip:'💬 Claude: "Buat OutletPerformance component. Fetch top 5 outlet by revenue. Perubahan vs kemarin. Hijau=#00E5A0 naik, merah=#FF4757 turun."'},
-    {id:'p4-3',text:'Realtime alert dari agent_logs (stok, transaksi)',tags:['tc','tco'],tip:'💬 Claude: "Subscribe ke tabel agent_logs via supabase.channel(). Setiap INSERT baru tampilkan toast notification di pojok kanan atas."'},
-    {id:'p4-4',text:'Status 6 AI Agent dari agent_logs (bukan cosmetic)',tags:['tc','tco'],tip:'💬 Claude: "Agent status ACTIVE jika ada agent_logs dengan agent_type tersebut dalam 1 jam terakhir. Tampilkan action terakhir."'},
-  ]},
-  {id:'p5',icon:'🚀',title:'FASE 5 — Polish & Siap Demo',cls:'c5',badge:'Hari 4-5',items:[
-    {id:'p5-1',text:'Seed data realistis: 3 outlet, 10 produk, 20 transaksi',tags:['tm','td'],tip:'Insert data yang terlihat nyata untuk demo ke klien. Gunakan nama produk F&B Indonesia.'},
-    {id:'p5-2',text:'Test mobile 375px — semua halaman usable',tags:['tt'],tip:'Chrome DevTools → device toolbar → iPhone SE. Pastikan tombol POS bisa disentuh jari.'},
-    {id:'p5-3',text:'Fix semua error di browser console',tags:['tc','tco'],tip:'💬 Claude: "Ada error di Lunomi: [paste error]. Tolong fix."'},
-    {id:'p5-4',text:'Set env variables di Vercel (Supabase + Gemini)',tags:['tm'],tip:'Vercel → Settings → Environment Variables. Tambahkan NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, GEMINI_API_KEY.'},
-    {id:'p5-5',text:'Deploy & test production di lunomi.vercel.app',tags:['tm'],tip:'Push ke GitHub → Vercel auto-deploy. Test semua flow di production URL.'},
-    {id:'p5-6',text:'Buat akun demo: demo@lunomi.id / Demo1234',tags:['tm','td'],tip:'Supabase Auth → Users → Invite. Role: owner. Untuk demo ke calon klien.'},
-    {id:'p5-7',text:'✅ Final: login → kasir transaksi → dashboard mulus',tags:['tt'],tip:'Flow lengkap tanpa error = Lunomi siap dijual! 🎉'},
-  ]}
-];
+function showSQL(){document.getElementById('sqlBox').style.display='block'}
 
+// ─── DATA ─────────────────────────────────────────────────────────────
+const PHASES = [
+{id:'p1',icon:'🗄️',title:'FASE 1 — Database & Fondasi',cls:'',badge:'Hari 1 Pagi',items:[
+
+{id:'p1-1',text:'Buat tabel Supabase: outlets, users, roles',tags:['td','tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buka Supabase Dashboard</div>
+  <div class="step-body">
+    Buka browser, pergi ke <strong>supabase.com</strong> → Login → klik project <strong>Lunomi</strong> kamu.
+    <div class="tip-box">Kalau belum punya project, klik "New Project", isi nama "lunomi", pilih region Singapore (terdekat dari Indonesia), set password database.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Buka SQL Editor</div>
+  <div class="step-body">
+    Di sidebar kiri, klik ikon <strong>Database</strong> (silinder) → klik <strong>SQL Editor</strong> → klik <strong>New Query</strong>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Copy & jalankan SQL ini</div>
+  <div class="step-body">
+    Copy semua kode di bawah, paste ke SQL Editor, klik tombol <strong>Run</strong> (atau Ctrl+Enter):
+    <div class="code-block">-- Tabel outlet/cabang
+CREATE TABLE outlets (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  city TEXT,
+  address TEXT,
+  phone TEXT,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Tabel role (jabatan)
+CREATE TABLE roles (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL -- owner, manager, kasir
+);
+INSERT INTO roles (name) VALUES ('owner'),('manager'),('kasir');
+
+-- Tabel user/karyawan login
+CREATE TABLE users (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  email TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'kasir',
+  outlet_id UUID REFERENCES outlets(id),
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);</div>
+    <div class="success-box">Jika berhasil, muncul tulisan "Success. No rows returned"</div>
+    <div class="warn-box">Jika error "already exists" berarti tabel sudah ada, itu tidak masalah.</div>
+  </div>
+</div>`},
+
+{id:'p1-2',text:'Buat tabel: transactions, transaction_items, products, inventory',tags:['td','tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Masih di SQL Editor Supabase</div>
+  <div class="step-body">Klik <strong>New Query</strong> lagi untuk query baru yang bersih.</div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Jalankan SQL tabel produk & transaksi</div>
+  <div class="step-body">
+    <div class="code-block">-- Tabel produk menu
+CREATE TABLE products (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  category TEXT,
+  price INTEGER NOT NULL DEFAULT 0,
+  image_url TEXT,
+  outlet_id UUID REFERENCES outlets(id),
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Stok produk per outlet
+CREATE TABLE inventory (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  product_id UUID REFERENCES products(id),
+  outlet_id UUID REFERENCES outlets(id),
+  stock INTEGER DEFAULT 0,
+  min_stock INTEGER DEFAULT 5,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Transaksi penjualan
+CREATE TABLE transactions (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  outlet_id UUID REFERENCES outlets(id),
+  kasir_id UUID REFERENCES users(id),
+  total INTEGER NOT NULL DEFAULT 0,
+  payment_method TEXT DEFAULT 'tunai',
+  status TEXT DEFAULT 'paid',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Detail item tiap transaksi
+CREATE TABLE transaction_items (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  transaction_id UUID REFERENCES transactions(id),
+  product_id UUID REFERENCES products(id),
+  product_name TEXT,
+  qty INTEGER DEFAULT 1,
+  price INTEGER DEFAULT 0,
+  subtotal INTEGER DEFAULT 0
+);
+
+-- Index untuk performa query
+CREATE INDEX idx_transactions_outlet ON transactions(outlet_id);
+CREATE INDEX idx_transactions_date ON transactions(created_at);</div>
+    <div class="success-box">Klik Run → harus muncul "Success"</div>
+  </div>
+</div>`},
+
+{id:'p1-3',text:'Buat tabel: employees, attendance, agent_logs',tags:['td','tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>New Query di SQL Editor</div>
+  <div class="step-body">Klik New Query, paste SQL berikut:</div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Jalankan SQL karyawan & AI logs</div>
+  <div class="step-body">
+    <div class="code-block">-- Data karyawan
+CREATE TABLE employees (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT,
+  outlet_id UUID REFERENCES outlets(id),
+  role TEXT DEFAULT 'kasir',
+  salary INTEGER DEFAULT 0,
+  join_date DATE DEFAULT CURRENT_DATE,
+  is_active BOOLEAN DEFAULT TRUE
+);
+
+-- Absensi harian
+CREATE TABLE attendance (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  employee_id UUID REFERENCES employees(id),
+  date DATE DEFAULT CURRENT_DATE,
+  check_in TIME,
+  check_out TIME,
+  status TEXT DEFAULT 'hadir'
+);
+
+-- Log aktivitas AI Agent
+CREATE TABLE agent_logs (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  agent_type TEXT NOT NULL,
+  action TEXT NOT NULL,
+  result TEXT,
+  outlet_id UUID REFERENCES outlets(id),
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Master resep produk
+CREATE TABLE recipes (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  product_id UUID REFERENCES products(id),
+  ingredient TEXT NOT NULL,
+  qty DECIMAL DEFAULT 0,
+  unit TEXT DEFAULT 'gram'
+);</div>
+    <div class="success-box">Semua tabel selesai dibuat! Cek di sidebar Table Editor untuk memastikan.</div>
+  </div>
+</div>`},
+
+{id:'p1-4',text:'Buat file src/lib/supabase/client.js',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buka VS Code, buka folder project Lunomi</div>
+  <div class="step-body">
+    Buka VS Code → File → Open Folder → pilih folder <strong>lunomi</strong> yang sudah di-clone dari GitHub.
+    <div class="tip-box">Belum clone? Buka terminal, ketik: <br><strong>git clone https://github.com/cleco-group/lunomi.git</strong></div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Buat folder dan file baru</div>
+  <div class="step-body">
+    Di VS Code, klik kanan folder <strong>src/lib</strong> → New Folder → ketik <strong>supabase</strong>.<br>
+    Klik kanan folder supabase baru → New File → ketik <strong>client.js</strong>.
+    <div class="warn-box">Jika folder src/lib belum ada, buat dulu: klik kanan src → New Folder → lib</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Paste kode ini ke client.js</div>
+  <div class="step-body">
+    <div class="code-block">import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseKey) {
+  throw new Error('Supabase URL atau Key belum diset di .env.local')
+}
+
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+export default supabase</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">4</span>Buat file .env.local di root project</div>
+  <div class="step-body">
+    Di root folder lunomi (sejajar package.json), buat file <strong>.env.local</strong> dan isi:
+    <div class="code-block">NEXT_PUBLIC_SUPABASE_URL=https://xxxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...</div>
+    Ganti dengan URL dan Key dari Supabase Dashboard → Settings → API.
+    <div class="warn-box">.env.local JANGAN di-commit ke GitHub. Pastikan ada di .gitignore</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">5</span>Prompt ke Claude Code</div>
+  <div class="step-body">
+    Buka Claude.ai, paste pesan ini:
+    <div class="code-block">Saya sedang mengerjakan project Lunomi (Next.js 16, 
+@supabase/supabase-js v2.104). Saya sudah buat file 
+src/lib/supabase/client.js. Tolong verifikasi apakah 
+kode ini sudah benar untuk Next.js 16 App Router dan 
+tambahkan error handling yang proper.</div>
+  </div>
+</div>`},
+
+{id:'p1-5',text:'Seed 1 outlet + 3 user ke Supabase',tags:['td','tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Insert data outlet pertama</div>
+  <div class="step-body">
+    Supabase Dashboard → SQL Editor → New Query:
+    <div class="code-block">-- Insert outlet pertama
+INSERT INTO outlets (name, city, address, phone)
+VALUES ('Lunomi Pusat', 'Jakarta', 
+        'Jl. Sudirman No. 1', '021-12345678');
+
+-- Lihat outlet yang baru dibuat (copy id-nya!)
+SELECT id, name FROM outlets;</div>
+    <div class="tip-box">Copy nilai id yang muncul (contoh: a1b2c3d4-...), akan dipakai di langkah berikutnya.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Insert 3 user dengan role berbeda</div>
+  <div class="step-body">
+    Ganti OUTLET_ID_DISINI dengan id yang baru dicopy:
+    <div class="code-block">INSERT INTO users (email, name, role, outlet_id) VALUES
+('owner@lunomi.id', 'Budi Owner', 'owner', 
+ 'OUTLET_ID_DISINI'),
+('manager@lunomi.id', 'Sari Manager', 'manager', 
+ 'OUTLET_ID_DISINI'),
+('kasir@lunomi.id', 'Dani Kasir', 'kasir', 
+ 'OUTLET_ID_DISINI');</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Insert beberapa produk contoh</div>
+  <div class="step-body">
+    <div class="code-block">INSERT INTO products (name, category, price, outlet_id)
+SELECT 
+  unnest(ARRAY['Nasi Goreng', 'Mie Goreng', 'Es Teh', 
+               'Kopi Susu', 'Ayam Bakar']),
+  unnest(ARRAY['Makanan', 'Makanan', 'Minuman', 
+               'Minuman', 'Makanan']),
+  unnest(ARRAY[25000, 23000, 8000, 15000, 35000]),
+  id FROM outlets LIMIT 1;</div>
+    <div class="success-box">Data awal siap! Kamu bisa lihat di Table Editor Supabase.</div>
+  </div>
+</div>`},
+
+{id:'p1-6',text:'Test koneksi: fetch outlets muncul di UI',tags:['tt','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Jalankan project di laptop</div>
+  <div class="step-body">
+    Buka terminal di VS Code (Ctrl+`) → ketik:
+    <div class="code-block">npm run dev</div>
+    Buka browser → pergi ke <strong>http://localhost:3000</strong>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Buat halaman test sementara</div>
+  <div class="step-body">
+    Buat file <strong>src/app/test/page.js</strong> dan paste:
+    <div class="code-block">import supabase from '@/lib/supabase/client'
+
+export default async function TestPage() {
+  const { data: outlets, error } = await supabase
+    .from('outlets')
+    .select('*')
+
+  if (error) return <div>Error: {error.message}</div>
+
+  return (
+    &lt;div style={{padding:20,color:'white',
+      background:'#0F172A',minHeight:'100vh'}}&gt;
+      &lt;h1&gt;Test Koneksi Supabase&lt;/h1&gt;
+      &lt;pre&gt;{JSON.stringify(outlets, null, 2)}&lt;/pre&gt;
+    &lt;/div&gt;
+  )
+}</div>
+    Buka browser ke <strong>http://localhost:3000/test</strong>
+    <div class="success-box">Jika muncul data outlet dalam format JSON = koneksi berhasil! 🎉</div>
+    <div class="warn-box">Jika error "Invalid URL" = cek .env.local sudah benar dan restart npm run dev</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Hapus halaman test</div>
+  <div class="step-body">Setelah berhasil, hapus file src/app/test/page.js — ini cuma untuk testing.</div>
+</div>`}
+
+]},
+{id:'p2',icon:'🔐',title:'FASE 2 — Auth & Route Guard',cls:'c2',badge:'Hari 1 Siang',items:[
+
+{id:'p2-1',text:'Aktifkan Supabase Auth (Email provider)',tags:['tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buka Authentication di Supabase</div>
+  <div class="step-body">
+    Supabase Dashboard → klik <strong>Authentication</strong> di sidebar kiri (ikon kunci) → klik <strong>Providers</strong>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Enable Email Provider</div>
+  <div class="step-body">
+    Cari <strong>Email</strong> di daftar provider → toggle ON → pastikan <strong>Confirm email</strong> di-OFF dulu (untuk testing lebih mudah) → klik Save.
+    <div class="tip-box">Confirm email bisa di-ON nanti setelah production. Sementara OFF dulu agar testing lebih cepat.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Buat akun untuk 3 user</div>
+  <div class="step-body">
+    Authentication → <strong>Users</strong> → klik <strong>Add User</strong> → isi email & password untuk:<br><br>
+    • <strong>owner@lunomi.id</strong> / password: Owner1234<br>
+    • <strong>manager@lunomi.id</strong> / password: Manager1234<br>
+    • <strong>kasir@lunomi.id</strong> / password: Kasir1234
+    <div class="success-box">3 user terdaftar = siap untuk testing login</div>
+  </div>
+</div>`},
+
+{id:'p2-2',text:'Buat src/store/auth-store.js (Zustand v5)',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buat folder store jika belum ada</div>
+  <div class="step-body">
+    Di VS Code, klik kanan folder <strong>src</strong> → New Folder → ketik <strong>store</strong>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Prompt ke Claude</div>
+  <div class="step-body">
+    Buka Claude.ai, kirim pesan ini:
+    <div class="code-block">Buat file src/store/auth-store.js untuk project Lunomi.
+Stack: Next.js 16, Zustand v5, @supabase/supabase-js v2.104.
+
+Requirements:
+- State: user, role, outletId, isLoading
+- Actions: signIn(email, password), signOut, getSession
+- Role diambil dari tabel 'users' kolom 'role' setelah login
+- Gunakan supabase dari '@/lib/supabase/client'
+- Export useAuthStore sebagai default</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Paste hasil Claude ke file</div>
+  <div class="step-body">
+    Buat file <strong>src/store/auth-store.js</strong> di VS Code → paste kode dari Claude → Save.
+    <div class="tip-box">Jika Claude memberikan kode TypeScript (.ts), minta ulang: "Berikan versi JavaScript (.js) bukan TypeScript"</div>
+  </div>
+</div>`},
+
+{id:'p2-3',text:'Update login page → Supabase Auth nyata',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Cek file login yang ada</div>
+  <div class="step-body">
+    Di VS Code, buka <strong>src/app/(auth)/login/page.js</strong> (atau page.jsx).<br>
+    Lihat kodenya — kemungkinan ada dummy auth seperti <em>if(password === "1234")</em>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Update halaman login Lunomi di app/(auth)/login/page.js.
+
+Ganti dummy auth dengan Supabase Auth nyata:
+1. Import useAuthStore dari '@/store/auth-store'
+2. Panggil signIn(email, password) saat form submit
+3. Jika berhasil: redirect ke /dashboard (role owner/manager)
+   atau /kasir (role kasir)
+4. Jika gagal: tampilkan pesan error merah di bawah form
+5. Tampilkan loading spinner saat proses login
+6. Pertahankan UI/design yang sudah ada
+
+Stack: Next.js 16, JavaScript (bukan TypeScript)</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Replace kode di VS Code</div>
+  <div class="step-body">
+    Select All (Ctrl+A) di file login → Delete → Paste kode dari Claude → Save.
+    <div class="warn-box">Backup dulu kode lama: copy ke file login-backup.js sebelum replace</div>
+  </div>
+</div>`},
+
+{id:'p2-4',text:'Buat middleware.js route guard per role',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Apa itu middleware?</div>
+  <div class="step-body">
+    Middleware adalah "penjaga gerbang" — setiap kali user buka URL, middleware mengecek dulu apakah user boleh masuk. Jika tidak login, langsung dikirim ke halaman login.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Buat file middleware.js</div>
+  <div class="step-body">
+    Buat file baru <strong>src/middleware.js</strong> (BUKAN di dalam folder app, tapi di dalam src langsung).
+    <div class="tip-box">Lokasi yang benar: src/middleware.js — sejajar dengan folder app</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat src/middleware.js untuk Next.js 16 project Lunomi.
+
+Rules:
+- /dashboard/* → hanya role 'owner' dan 'manager'
+- /kasir/* → hanya role 'kasir' dan 'manager'  
+- /login → redirect ke /dashboard jika sudah login
+- Semua route lain yang butuh auth → redirect ke /login
+
+Gunakan @supabase/supabase-js v2.104 untuk cek session.
+Tulis dalam JavaScript (bukan TypeScript).</div>
+  </div>
+</div>`},
+
+{id:'p2-5',text:'Test login 3 akun — redirect harus benar',tags:['tt'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Test akun Owner</div>
+  <div class="step-body">
+    Buka <strong>localhost:3000/login</strong> → login dengan <strong>owner@lunomi.id</strong> / Owner1234.<br>
+    ✅ Harus redirect ke <strong>/dashboard</strong>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Test akun Kasir</div>
+  <div class="step-body">
+    Logout → login dengan <strong>kasir@lunomi.id</strong> / Kasir1234.<br>
+    ✅ Harus redirect ke <strong>/kasir</strong>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Test route protection</div>
+  <div class="step-body">
+    Saat login sebagai kasir, coba manual buka <strong>localhost:3000/dashboard</strong>.<br>
+    ✅ Harus redirect kembali ke <strong>/login</strong> (akses ditolak).
+    <div class="warn-box">Jika bisa masuk dashboard padahal login sebagai kasir = middleware belum benar. Kirim error ke Claude untuk diperbaiki.</div>
+  </div>
+</div>`}
+
+]},
+{id:'p3',icon:'🛒',title:'FASE 3 — POS Kasir (Core Feature)',cls:'c3',badge:'Hari 2',items:[
+
+{id:'p3-1',text:'Buat /kasir: grid produk + keranjang',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buat folder kasir</div>
+  <div class="step-body">
+    Di VS Code: klik kanan folder <strong>src/app</strong> → New Folder → ketik <strong>kasir</strong>.<br>
+    Di dalam folder kasir → New File → ketik <strong>page.js</strong>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat halaman POS kasir Lunomi di src/app/kasir/page.js.
+
+Design:
+- Background: #0F172A (dark)
+- Layout desktop: 2 kolom (kiri 60% produk, kanan 40% keranjang)
+- Layout mobile: tampilan tab (Produk / Keranjang)
+- Font: Inter (body), Syne (heading)
+- Primary color: #2563EB, Accent: #F0A500
+
+Fitur:
+- Kiri: grid 2-3 kolom produk, fetch dari Supabase tabel 'products'
+  filter is_active=true dan outlet_id dari auth store
+- Setiap kartu produk: nama, harga (format Rupiah), foto (optional)
+- Klik produk = tambah ke keranjang
+- Kanan: daftar keranjang dengan qty +/- , subtotal, total
+- Tombol "Bayar" besar di bawah keranjang
+
+Stack: Next.js 16 App Router, JavaScript, Tailwind v4,
+Zustand v5, @supabase/supabase-js v2.104</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Paste & test</div>
+  <div class="step-body">
+    Paste kode Claude ke page.js → buka localhost:3000/kasir → pastikan produk muncul dari Supabase.
+    <div class="tip-box">Jika produk tidak muncul, cek apakah outlet_id di tabel users sudah benar dan products sudah ada datanya.</div>
+  </div>
+</div>`},
+
+{id:'p3-2',text:'Buat transaction-store.js (Zustand): keranjang + total',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat src/store/transaction-store.js untuk POS kasir Lunomi.
+
+Stack: Zustand v5, JavaScript
+
+State yang dibutuhkan:
+- cart: array of {productId, name, price, qty, subtotal}
+- paymentMethod: 'tunai' | 'qris' | 'ewallet'
+
+Actions:
+- addItem(product) → tambah ke cart, jika sudah ada tambah qty
+- removeItem(productId) → hapus dari cart
+- updateQty(productId, qty) → update jumlah, qty 0 = hapus
+- clearCart() → kosongkan semua
+- setPaymentMethod(method)
+
+Getters:
+- getTotal() → total harga semua item
+- getItemCount() → jumlah total item
+
+Format harga: gunakan Intl.NumberFormat('id-ID', 
+{style:'currency', currency:'IDR', minimumFractionDigits:0})</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Integrasikan ke halaman kasir</div>
+  <div class="step-body">
+    Setelah file store dibuat, update halaman kasir agar menggunakan store ini untuk keranjang belanja.
+    <div class="code-block">// Di komponen kasir, tambahkan import:
+import { useTransactionStore } from '@/store/transaction-store'
+
+// Di dalam komponen:
+const { cart, addItem, removeItem, getTotal } = useTransactionStore()</div>
+  </div>
+</div>`},
+
+{id:'p3-3',text:'Modal pembayaran: Tunai, QRIS, E-Wallet',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat komponen PaymentModal untuk POS kasir Lunomi.
+Simpan di src/components/pos/PaymentModal.jsx.
+
+Tampilkan modal saat tombol "Bayar" diklik.
+
+3 tab pilihan pembayaran:
+
+1. TUNAI:
+   - Input "Uang diterima" (angka)
+   - Tampilkan "Kembalian: Rp XX.XXX" (auto-hitung)
+   - Tombol konfirmasi aktif jika uang diterima >= total
+
+2. QRIS:
+   - Tampilkan gambar QR placeholder (pakai div kotak abu-abu)
+   - Teks "Scan QR dengan aplikasi apapun"
+   - Tombol "Konfirmasi Sudah Bayar"
+
+3. E-WALLET:
+   - 3 pilihan: GoPay, OVO, Dana (pakai emoji sebagai icon)
+   - Setelah pilih, tampilkan instruksi singkat
+   - Tombol konfirmasi
+
+Props: isOpen, total, onClose, onConfirm(paymentMethod)
+Design: dark modal dengan overlay, warna brand Lunomi</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Hubungkan ke tombol Bayar</div>
+  <div class="step-body">
+    Di halaman kasir, import PaymentModal dan tampilkan saat tombol Bayar diklik:
+    <div class="code-block">const [showPayment, setShowPayment] = useState(false)
+
+// Di JSX:
+&lt;button onClick={() => setShowPayment(true)}&gt;Bayar&lt;/button&gt;
+&lt;PaymentModal
+  isOpen={showPayment}
+  total={getTotal()}
+  onClose={() => setShowPayment(false)}
+  onConfirm={handlePaymentConfirm}
+/&gt;</div>
+  </div>
+</div>`},
+
+{id:'p3-4',text:'Simpan transaksi ke Supabase',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat fungsi saveTransaction di 
+src/lib/supabase/transactions.js untuk Lunomi POS.
+
+Parameter: { outletId, kasirId, cart, total, paymentMethod }
+
+Proses:
+1. Insert ke tabel 'transactions':
+   {outlet_id, kasir_id, total, payment_method, status:'paid'}
+2. Ambil transaction id yang baru dibuat
+3. Batch insert ke 'transaction_items':
+   cart.map(item => ({
+     transaction_id, product_id: item.productId,
+     product_name: item.name, qty: item.qty,
+     price: item.price, subtotal: item.subtotal
+   }))
+4. Return {success: true, transactionId} atau {error}
+
+Gunakan @supabase/supabase-js v2.104, JavaScript.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Panggil saat payment dikonfirmasi</div>
+  <div class="step-body">
+    Di kasir page, buat fungsi handlePaymentConfirm:
+    <div class="code-block">async function handlePaymentConfirm(method) {
+  const result = await saveTransaction({
+    outletId: user.outletId,
+    kasirId: user.id,
+    cart: cart,
+    total: getTotal(),
+    paymentMethod: method
+  })
+  
+  if (result.success) {
+    clearCart()
+    setShowReceipt(true)
+  } else {
+    alert('Gagal simpan: ' + result.error)
+  }
+}</div>
+  </div>
+</div>`},
+
+{id:'p3-5',text:'Kurangi stok inventory otomatis',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Update fungsi saveTransaction di 
+src/lib/supabase/transactions.js.
+
+Setelah transaksi berhasil disimpan, tambahkan:
+
+1. Loop setiap item di cart:
+   UPDATE inventory 
+   SET stock = stock - qty, updated_at = NOW()
+   WHERE product_id = item.productId 
+   AND outlet_id = outletId
+
+2. Setelah update stok, cek inventory:
+   SELECT product_id, stock, min_stock 
+   FROM inventory 
+   WHERE outlet_id = outletId
+
+3. Untuk setiap produk dengan stock <= min_stock:
+   INSERT INTO agent_logs 
+   (agent_type, action, result, outlet_id)
+   VALUES ('OPS', 'low_stock_alert', 
+           'Stok [nama produk] tersisa [N]', outletId)
+
+Gunakan @supabase/supabase-js v2.104</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Verifikasi di Supabase</div>
+  <div class="step-body">
+    Setelah transaksi test, cek di Supabase Table Editor:<br>
+    • Tabel <strong>inventory</strong> → stok berkurang<br>
+    • Tabel <strong>agent_logs</strong> → ada log jika stok rendah
+    <div class="success-box">Kalau keduanya terupdate = fitur auto stok berjalan!</div>
+  </div>
+</div>`},
+
+{id:'p3-6',text:'Komponen struk setelah transaksi',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat komponen Receipt di src/components/pos/Receipt.jsx.
+
+Props: { transaction, outletName, kasirName, onClose }
+
+Tampilkan:
+- Header: nama outlet, alamat
+- Tanggal & jam (timezone Asia/Jakarta / WIB)
+- Nomor transaksi (5 digit terakhir dari UUID)
+- Garis pemisah
+- Daftar item: nama | qty | harga | subtotal
+- Garis pemisah
+- Total
+- Metode pembayaran
+- Jika tunai: tampilkan uang diterima & kembalian
+- Nama kasir
+- Footer: "Terima kasih sudah berkunjung!"
+
+2 tombol di bawah:
+1. "🖨️ Cetak Struk" → window.print()
+2. "✅ Transaksi Baru" → onClose()
+
+Style: background putih (untuk print), font monospace,
+lebar max 320px (ukuran struk thermal)</div>
+  </div>
+</div>`},
+
+{id:'p3-7',text:'Test end-to-end: transaksi → cek Supabase',tags:['tt'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Simulasi transaksi lengkap</div>
+  <div class="step-body">
+    Login sebagai kasir → buka /kasir → klik 3 produk berbeda → klik Bayar → pilih Tunai → isi nominal → Konfirmasi.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Verifikasi di Supabase</div>
+  <div class="step-body">
+    Buka Supabase Dashboard → Table Editor:<br><br>
+    ✅ <strong>transactions</strong> → ada 1 row baru<br>
+    ✅ <strong>transaction_items</strong> → ada 3 row (sesuai produk yang dibeli)<br>
+    ✅ <strong>inventory</strong> → stok 3 produk berkurang<br>
+    ✅ Struk muncul di layar kasir
+    <div class="success-box">Semua ✅ = POS Kasir selesai dan berfungsi penuh! Core feature Lunomi sudah jalan.</div>
+    <div class="warn-box">Ada yang gagal? Screenshot error → kirim ke Claude dengan pesan "Ada error di POS Lunomi: [paste error]"</div>
+  </div>
+</div>`}
+
+]},
+{id:'p4',icon:'📊',title:'FASE 4 — Dashboard Owner (Data Real)',cls:'c4',badge:'Hari 3',items:[
+
+{id:'p4-1',text:'Ganti semua angka dummy → data Supabase nyata',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Identifikasi data dummy di dashboard</div>
+  <div class="step-body">
+    Buka <strong>src/app/dashboard/page.js</strong> di VS Code. Cari angka yang hardcoded seperti:<br>
+    <div class="code-block">const revenue = 45230000  // ← ini dummy
+const totalOutlets = 18  // ← ini dummy</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Update src/app/dashboard/page.js Lunomi.
+Ganti semua data hardcoded dengan fetch dari Supabase.
+
+Query yang dibutuhkan:
+1. Revenue hari ini: 
+   SELECT SUM(total) FROM transactions 
+   WHERE created_at >= CURRENT_DATE
+
+2. Revenue kemarin (untuk % perubahan):
+   SELECT SUM(total) FROM transactions 
+   WHERE created_at >= CURRENT_DATE - 1
+   AND created_at < CURRENT_DATE
+
+3. Total outlet aktif: 
+   SELECT COUNT(*) FROM outlets WHERE is_active=true
+
+4. Total karyawan: 
+   SELECT COUNT(*) FROM employees WHERE is_active=true
+
+5. Transaksi hari ini: 
+   SELECT COUNT(*) FROM transactions 
+   WHERE created_at >= CURRENT_DATE
+
+Gunakan format Rupiah: 
+Intl.NumberFormat('id-ID',{style:'currency',
+currency:'IDR',minimumFractionDigits:0})
+
+Stack: Next.js 16 App Router (Server Component), 
+@supabase/supabase-js v2.104, JavaScript</div>
+  </div>
+</div>`},
+
+{id:'p4-2',text:'Widget Top 5 Outlet by revenue',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat komponen OutletPerformance untuk dashboard Lunomi.
+Simpan di src/components/dashboard/OutletPerformance.jsx.
+
+Data: fetch dari Supabase
+SELECT o.name, SUM(t.total) as revenue
+FROM transactions t
+JOIN outlets o ON t.outlet_id = o.id
+WHERE t.created_at >= CURRENT_DATE
+GROUP BY o.name
+ORDER BY revenue DESC
+LIMIT 5
+
+Tampilkan setiap outlet:
+- Nama outlet
+- Revenue hari ini (format Rupiah)
+- Bar progress (relative ke outlet teratas)
+- Badge rank (#1, #2, dst)
+
+Warna: #00E5A0 untuk revenue tertinggi, gradient ke bawah.
+Background card: #1E293B, border: #2D3F55</div>
+  </div>
+</div>`},
+
+{id:'p4-3',text:'Realtime alert dari Supabase',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Apa itu Supabase Realtime?</div>
+  <div class="step-body">
+    Realtime artinya dashboard otomatis update TANPA perlu refresh halaman. Setiap ada transaksi baru atau alert stok, notifikasi langsung muncul.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Aktifkan Realtime di Supabase</div>
+  <div class="step-body">
+    Supabase Dashboard → Database → <strong>Replication</strong> → pastikan tabel <strong>agent_logs</strong> dan <strong>transactions</strong> di-toggle ON untuk realtime.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Buat hook useRealtimeAlerts untuk dashboard Lunomi.
+Simpan di src/lib/hooks/useRealtimeAlerts.js.
+
+Fungsi:
+- Subscribe ke tabel agent_logs via supabase.channel()
+- Setiap INSERT baru, tampilkan toast notification
+- Toast muncul di pojok kanan atas layar
+- Auto hilang setelah 5 detik
+- Bisa ditutup manual (klik X)
+
+Style toast berdasarkan agent_type:
+- OPS → kuning (#F0A500) — alert stok
+- FIN → hijau (#00E5A0) — info keuangan  
+- IT → merah (#FF4757) — alert keamanan
+- Lainnya → biru (#2563EB)
+
+Gunakan @supabase/supabase-js v2.104 channel API (bukan API lama).
+JavaScript, React hooks.</div>
+  </div>
+</div>`},
+
+{id:'p4-4',text:'Status 6 AI Agent dari data nyata',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Prompt ke Claude</div>
+  <div class="step-body">
+    <div class="code-block">Update komponen AI Agent di dashboard Lunomi.
+
+Saat ini status ACTIVE/IDLE hanya cosmetic (hardcoded).
+Ganti dengan data nyata dari Supabase:
+
+Query per agent type (FIN, HR, OPS, MKT, IT, DES):
+SELECT action, created_at 
+FROM agent_logs 
+WHERE agent_type = '[TYPE]' 
+ORDER BY created_at DESC LIMIT 1
+
+Logic status:
+- Jika ada log dalam 1 jam terakhir → status ACTIVE (hijau)
+- Jika ada log dalam 24 jam terakhir → status IDLE (abu)
+- Jika tidak ada log sama sekali → status OFFLINE (merah)
+
+Tampilkan di card agent:
+- Dot indicator (warna sesuai status)
+- Teks status
+- Aktivitas terakhir: action dari log terbaru
+- Waktu aktivitas: "5 menit lalu", "2 jam lalu", dst
+
+Refresh setiap 60 detik otomatis.</div>
+  </div>
+</div>`}
+
+]},
+{id:'p5',icon:'🚀',title:'FASE 5 — Polish & Siap Demo',cls:'c5',badge:'Hari 4-5',items:[
+
+{id:'p5-1',text:'Seed data realistis untuk demo',tags:['tm','td'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Insert 3 outlet dengan nama F&B Indonesia</div>
+  <div class="step-body">
+    <div class="code-block">INSERT INTO outlets (name, city, address) VALUES
+('Warung Lunomi Sudirman', 'Jakarta', 'Jl. Sudirman No. 45'),
+('Lunomi Cafe Bandung', 'Bandung', 'Jl. Braga No. 12'),
+('Lunomi Resto Surabaya', 'Surabaya', 'Jl. Darmo No. 78');</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Insert 10 produk menu</div>
+  <div class="step-body">
+    <div class="code-block">-- Ganti outlet_id dengan id outlet Jakarta
+INSERT INTO products (name, category, price, outlet_id)
+VALUES
+('Nasi Goreng Spesial','Makanan',28000,'OUTLET_ID'),
+('Mie Goreng Seafood','Makanan',32000,'OUTLET_ID'),
+('Ayam Bakar Madu','Makanan',45000,'OUTLET_ID'),
+('Soto Ayam','Makanan',22000,'OUTLET_ID'),
+('Gado-Gado','Makanan',18000,'OUTLET_ID'),
+('Es Teh Manis','Minuman',8000,'OUTLET_ID'),
+('Jus Alpukat','Minuman',18000,'OUTLET_ID'),
+('Kopi Susu Gula Aren','Minuman',22000,'OUTLET_ID'),
+('Es Campur','Minuman',15000,'OUTLET_ID'),
+('Air Mineral','Minuman',5000,'OUTLET_ID');</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Generate 20 transaksi sample (opsional)</div>
+  <div class="step-body">
+    Prompt ke Claude: <em>"Buatkan SQL untuk insert 20 transaksi sample yang realistis untuk Lunomi POS, dengan berbagai produk dan waktu yang berbeda dalam 7 hari terakhir."</em>
+    <div class="success-box">Dengan data ini, dashboard akan terlihat hidup saat demo ke klien.</div>
+  </div>
+</div>`},
+
+{id:'p5-2',text:'Test mobile 375px — semua halaman usable',tags:['tt'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Cara test mobile di Chrome</div>
+  <div class="step-body">
+    Buka Chrome → buka localhost:3000 → tekan <strong>F12</strong> (DevTools) → klik ikon HP/tablet di pojok kiri atas DevTools → pilih ukuran <strong>iPhone SE</strong> (375px).
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Checklist tiap halaman</div>
+  <div class="step-body">
+    Test satu per satu di ukuran 375px:<br><br>
+    ✅ <strong>/login</strong> → form tidak keluar layar, tombol mudah diklik<br>
+    ✅ <strong>/kasir</strong> → produk bisa diklik, keranjang bisa dilihat<br>
+    ✅ <strong>/dashboard</strong> → angka terbaca, tidak ada yang terpotong<br>
+    ✅ Modal pembayaran → tidak keluar layar
+    <div class="warn-box">Tombol kurang dari 44px tingginya = susah diklik di HP. Perbesar minimum 48px.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Fix masalah mobile</div>
+  <div class="step-body">
+    Kalau ada yang tidak pas, screenshot → kirim ke Claude:
+    <div class="code-block">Di halaman /kasir Lunomi tampilan mobile 375px ada masalah:
+[deskripsi masalah atau attach screenshot]
+Tolong perbaiki CSS/layout-nya.</div>
+  </div>
+</div>`},
+
+{id:'p5-3',text:'Fix semua error di browser console',tags:['tc','tco'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Cara buka Console di Chrome</div>
+  <div class="step-body">
+    Buka Chrome → tekan <strong>F12</strong> → klik tab <strong>Console</strong> (bukan Elements).<br>
+    Lihat apakah ada tulisan merah (error) atau kuning (warning).
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Cara kirim error ke Claude</div>
+  <div class="step-body">
+    Klik kanan tulisan merah → Copy → paste ke Claude:
+    <div class="code-block">Ada error di project Lunomi (Next.js 16):
+[paste error message]
+
+Ini terjadi di halaman: [nama halaman]
+Tolong fix dan jelaskan penyebabnya.</div>
+    <div class="tip-box">Kirim satu error per satu. Jangan kirim semua sekaligus — lebih mudah di-fix satu per satu.</div>
+  </div>
+</div>`},
+
+{id:'p5-4',text:'Set env variables di Vercel',tags:['tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buka Vercel Dashboard</div>
+  <div class="step-body">
+    Buka <strong>vercel.com</strong> → Login → klik project <strong>lunomi</strong>.
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Tambahkan Environment Variables</div>
+  <div class="step-body">
+    Klik tab <strong>Settings</strong> → klik <strong>Environment Variables</strong> → tambahkan satu per satu:<br><br>
+    • Key: <strong>NEXT_PUBLIC_SUPABASE_URL</strong> → Value: URL Supabase kamu<br>
+    • Key: <strong>NEXT_PUBLIC_SUPABASE_ANON_KEY</strong> → Value: Anon key Supabase<br>
+    • Key: <strong>GEMINI_API_KEY</strong> → Value: API key dari Google AI Studio<br><br>
+    Centang semua environment (Production, Preview, Development) → klik Save.
+    <div class="warn-box">Pastikan tidak ada spasi di awal/akhir value saat copy-paste.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Redeploy</div>
+  <div class="step-body">
+    Setelah save env variables → klik tab <strong>Deployments</strong> → klik tombol <strong>⋯</strong> di deployment terbaru → klik <strong>Redeploy</strong>.
+    <div class="success-box">Tunggu ~1 menit → lunomi.vercel.app sudah pakai env variables yang benar.</div>
+  </div>
+</div>`},
+
+{id:'p5-5',text:'Deploy & test semua fitur di production',tags:['tm'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Push ke GitHub (auto deploy ke Vercel)</div>
+  <div class="step-body">
+    Buka terminal di VS Code:
+    <div class="code-block">git add .
+git commit -m "feat: POS kasir + dashboard realtime siap demo"
+git push origin master</div>
+    Vercel otomatis detect push dan mulai deploy (~2 menit).
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Test di URL production</div>
+  <div class="step-body">
+    Buka <strong>lunomi.vercel.app</strong> di HP (bukan localhost!).<br><br>
+    Test flow lengkap:<br>
+    ✅ Login sebagai owner → dashboard muncul data real<br>
+    ✅ Login sebagai kasir → bisa transaksi<br>
+    ✅ Transaksi di kasir → muncul di dashboard owner<br>
+    <div class="warn-box">Kalau di production ada error tapi di localhost tidak — kemungkinan env variables belum benar atau ada import yang gagal.</div>
+  </div>
+</div>`},
+
+{id:'p5-6',text:'Buat akun demo untuk klien',tags:['tm','td'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Buat user demo di Supabase Auth</div>
+  <div class="step-body">
+    Supabase Dashboard → Authentication → Users → <strong>Add User</strong>:<br><br>
+    • Email: <strong>demo@lunomi.id</strong><br>
+    • Password: <strong>Demo1234!</strong><br>
+    • Centang "Auto Confirm User"
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Set role owner untuk akun demo</div>
+  <div class="step-body">
+    Supabase → SQL Editor:
+    <div class="code-block">INSERT INTO users (email, name, role, outlet_id)
+SELECT 'demo@lunomi.id', 'Demo Owner', 'owner', id
+FROM outlets LIMIT 1;</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Test akun demo</div>
+  <div class="step-body">
+    Login di lunomi.vercel.app dengan demo@lunomi.id → harus bisa masuk dashboard dengan data yang terlihat nyata.
+    <div class="tip-box">Catat kredensial ini untuk diberikan ke calon klien saat demo: URL + email + password.</div>
+  </div>
+</div>`},
+
+{id:'p5-7',text:'✅ Final check: flow lengkap mulus',tags:['tt'],
+guide:`
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">1</span>Simulasi sebagai klien baru</div>
+  <div class="step-body">
+    Bayangkan kamu adalah calon klien yang baru pertama kali melihat Lunomi. Test dari awal:
+    <div class="code-block">1. Buka lunomi.vercel.app di HP
+2. Login: demo@lunomi.id / Demo1234!
+3. Lihat dashboard → angka harus real, bukan 0
+4. Buka tab kasir → pilih 3 produk
+5. Bayar via Tunai
+6. Struk muncul
+7. Kembali ke dashboard → revenue bertambah
+8. Cek alert agent (jika stok rendah)</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">2</span>Kalau semua mulus...</div>
+  <div class="step-body">
+    <div class="success-box">🎉 LUNOMI SIAP DIJUAL! Hubungi calon klien F&B pertama dan jadwalkan demo. Tunjukkan: "Kasir transaksi → Owner lihat realtime di HP" — itu cukup untuk closing klien pertama.</div>
+  </div>
+</div>
+<div class="guide-step">
+  <div class="step-title"><span class="step-num">3</span>Harga yang disarankan untuk MVP</div>
+  <div class="step-body">
+    Setup fee: <strong>Rp 500.000 – 1.000.000</strong> per outlet<br>
+    Langganan bulanan: <strong>Rp 200.000 – 350.000</strong> per outlet<br>
+    <div class="tip-box">Mulai dari 1 klien dulu. Feedback dari klien pertama = fitur terbaik untuk versi berikutnya.</div>
+  </div>
+</div>`}
+
+]}
+]; // end PHASES
+
+// ─── SUPABASE ─────────────────────────────────────────────────────────
 let sb=null, state={};
 const TBL='lunomi_checklist';
+let activeItem=null;
 
 function loadSupa(){
   return new Promise((res,rej)=>{
@@ -175,10 +1280,10 @@ function loadSupa(){
 async function doSetup(){
   const url=document.getElementById('sbUrl').value.trim();
   const key=document.getElementById('sbKey').value.trim();
-  const user=document.getElementById('sbUser').value.trim()||'User';
+  const user=document.getElementById('sbUser').value.trim()||'Developer';
   const btn=document.getElementById('setupBtn');
   const err=document.getElementById('errMsg');
-  if(!url||!key){err.textContent='Isi URL dan Key dulu.';err.style.display='block';return;}
+  if(!url||!key){showErr('Isi Supabase URL dan Anon Key dulu.');return;}
   btn.disabled=true;btn.textContent='Menghubungkan...';err.style.display='none';
   try{
     await loadSupa();
@@ -188,11 +1293,13 @@ async function doSetup(){
     localStorage.setItem('lu',JSON.stringify({url,key,user}));
     startApp(user);
   }catch(e){
-    err.textContent='Gagal: '+e.message+'. Pastikan tabel lunomi_checklist sudah dibuat.';
-    err.style.display='block';
-    btn.disabled=false;btn.textContent='Hubungkan & Mulai';
+    showErr('Gagal konek: '+e.message+'\n\nPastikan tabel lunomi_checklist sudah dibuat (lihat SQL di bawah).');
+    btn.disabled=false;btn.textContent='Hubungkan & Mulai →';
+    document.getElementById('sqlBox').style.display='block';
   }
 }
+
+function showErr(msg){const el=document.getElementById('errMsg');el.textContent=msg;el.style.display='block';}
 
 async function startApp(user){
   document.getElementById('modalBg').classList.add('hidden');
@@ -212,7 +1319,8 @@ async function loadData(){
   render();
 }
 
-async function toggle(id){
+async function toggleDone(id, event){
+  if(event)event.stopPropagation();
   state[id]=!state[id];
   if(!state[id])delete state[id];
   render();
@@ -223,13 +1331,19 @@ async function toggle(id){
   }catch(e){setSS('','⚠ Gagal sync');}
 }
 
+function toggleExpand(id){
+  activeItem = activeItem===id ? null : id;
+  render();
+}
+
 function listenRealtime(){
   try{
-    sb.channel('cl').on('postgres_changes',{event:'*',schema:'public',table:TBL},p=>{
-      const r=p.new;if(!r)return;
-      if(r.done)state[r.id]=true;else delete state[r.id];
-      render();setSS('ok','● Tersinkron');
-    }).subscribe();
+    sb.channel('cl-sync')
+      .on('postgres_changes',{event:'*',schema:'public',table:TBL},p=>{
+        const r=p.new;if(!r)return;
+        if(r.done)state[r.id]=true;else delete state[r.id];
+        render();setSS('ok','● Tersinkron');
+      }).subscribe();
   }catch(e){}
 }
 
@@ -238,37 +1352,54 @@ function setSS(cls,txt){
   el.className='ss'+(cls?' '+cls:'');el.textContent=txt;
 }
 
+// ─── RENDER ───────────────────────────────────────────────────────────
+const tagLabel={tc:'🤖 Claude',tco:'💻 Code',tm:'✋ Manual',td:'🗄️ DB',tt:'🧪 Test'};
+
 function render(){
   const c=document.getElementById('phases');c.innerHTML='';
   PHASES.forEach(ph=>{
     const done=ph.items.filter(i=>state[i.id]).length;
     const el=document.createElement('div');el.className='phase';
     el.innerHTML=`
-      <div class="ph ${ph.cls}" onclick="togglePh('${ph.id}')">
+      <div class="ph ${ph.cls}" onclick="togglePhase('${ph.id}')">
         <span class="pi">${ph.icon}</span>
         <span class="ptt">${ph.title}</span>
         <span class="pb">${ph.badge}</span>
         <span class="pg">${done}/${ph.items.length}</span>
       </div>
       <div class="items" id="i-${ph.id}">
-        ${ph.items.map(item=>`
-          <div class="item${state[item.id]?' done':''}" onclick="toggle('${item.id}')">
-            <div class="cb"><span class="ck">✓</span></div>
-            <div style="flex:1">
-              <div class="it">${item.text}</div>
-              <div class="tags">${item.tags.map(t=>`<span class="tag ${t}">${
-                t==='tc'?'🤖 Claude':t==='tco'?'💻 Code':t==='tm'?'✋ Manual':t==='td'?'🗄️ DB':'🧪 Test'
-              }</span>`).join('')}</div>
-              ${item.tip?`<div class="ptip">${item.tip}</div>`:''}
+        ${ph.items.map(item=>{
+          const isDone=!!state[item.id];
+          const isActive=activeItem===item.id;
+          return `
+          <div class="item${isDone?' done':''}${isActive?' active':''}">
+            <div class="item-top" onclick="toggleExpand('${item.id}')">
+              <div class="cb" onclick="toggleDone('${item.id}',event)">
+                <span class="ck">✓</span>
+              </div>
+              <div class="item-right">
+                <div class="it">${item.text}</div>
+                <div class="tags">
+                  ${item.tags.map(t=>`<span class="tag ${t}">${tagLabel[t]||t}</span>`).join('')}
+                </div>
+              </div>
+              <span class="expand-icon">▼</span>
             </div>
-          </div>`).join('')}
+            ${isActive?`
+            <div class="guide">
+              ${item.guide}
+              <button class="done-btn" onclick="toggleDone('${item.id}',event)">
+                ${isDone?'↩ Tandai Belum Selesai':'✅ Tandai Selesai'}
+              </button>
+            </div>`:''}
+          </div>`}).join('')}
       </div>`;
     c.appendChild(el);
   });
   updProg();
 }
 
-function togglePh(id){
+function togglePhase(id){
   const el=document.getElementById('i-'+id);
   el.style.display=el.style.display==='none'?'flex':'none';
 }
@@ -286,15 +1417,13 @@ function updProg(){
 
 async function doReset(){
   if(!confirm('Reset semua progress di semua device?'))return;
-  state={};render();
+  state={};activeItem=null;render();
   try{await sb.from(TBL).delete().neq('id','__x__');setSS('ok','● Tersinkron');}catch(e){}
 }
 
-function doLogout(){
-  localStorage.removeItem('lu');location.reload();
-}
+function doLogout(){localStorage.removeItem('lu');location.reload();}
 
-// AUTO LOGIN
+// ─── AUTO LOGIN ────────────────────────────────────────────────────────
 (async()=>{
   const saved=localStorage.getItem('lu');
   if(saved){
@@ -302,27 +1431,13 @@ function doLogout(){
       const {url,key,user}=JSON.parse(saved);
       document.getElementById('sbUrl').value=url;
       document.getElementById('sbKey').value=key;
-      document.getElementById('sbUser').value=user;
+      document.getElementById('sbUser').value=user||'';
       await loadSupa();
       sb=window.supabase.createClient(url,key);
-      startApp(user);
+      startApp(user||'Developer');
     }catch(e){document.getElementById('modalBg').classList.remove('hidden');}
   }
 })();
-</script>
-
-<!-- INSTRUKSI SETUP TABEL -->
-<script>
-// PENTING: Buat tabel ini dulu di Supabase SQL Editor:
-/*
-CREATE TABLE IF NOT EXISTS lunomi_checklist (
-  id TEXT PRIMARY KEY,
-  done BOOLEAN DEFAULT FALSE,
-  updated_at TIMESTAMPTZ DEFAULT NOW()
-);
-ALTER TABLE lunomi_checklist ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "public_access" ON lunomi_checklist FOR ALL USING (true) WITH CHECK (true);
-*/
 </script>
 </body>
 </html>
